@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity implements AddCityFragment.A
         cityAdapter.notifyDataSetChanged();
     }
     @Override
-    public void updateCity(String name, String newName, String newProvince) {
+    public void updateCity(String name, String province, String newName, String newProvince) {
         for(int i = 0; i < dataList.size(); i++) {
-            if(dataList.get(i).getName().equals(name)) {
+            if(dataList.get(i).getName().equals(name) && dataList.get(i).getProvince().equals(province)) {
                 City updated = new City(newName, newProvince);
                 dataList.set(i, updated);
             }

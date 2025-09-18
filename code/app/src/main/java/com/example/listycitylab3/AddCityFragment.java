@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 public class AddCityFragment extends DialogFragment {
     interface AddCityDialogListener {
         void addCity(City city);
-        void updateCity(String name, String newName, String newProvince);
+        void updateCity(String name, String province, String newName, String newProvince);
     }
     Bundle b;
     public AddCityFragment(Bundle b) {
@@ -49,7 +49,7 @@ public class AddCityFragment extends DialogFragment {
         return builder.setView(view).setTitle("Add/Edit a city").setNegativeButton("Cancel", null).setPositiveButton("Add", (dialog, which) -> {
             String cityName = editCityName.getText().toString();
             String provinceName = editProvinceName.getText().toString();
-            if(editing) listener.updateCity(b.get("change_city").toString(), cityName, provinceName);
+            if(editing) listener.updateCity(b.get("change_city").toString(), b.get("change_province").toString(), cityName, provinceName);
             else listener.addCity(new City(cityName, provinceName));
         }).create();
     }
